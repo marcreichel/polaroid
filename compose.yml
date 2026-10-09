@@ -1,0 +1,23 @@
+services:
+  polaroid:
+    build: .
+    restart: unless-stopped
+    environment:
+      PUBLIC_URL: https://${DOMAIN:?set DOMAIN, e.g. DOMAIN=img.example.com in .env}
+    volumes:
+      - images:/data
+
+  # Terminates HTTPS with an automatic Let's Encrypt certificate.
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    command: caddy reverse-proxy --from ${DOMAIN} --to polaroid:3000
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy:/data
+
+volumes:
+  images:
+  caddy:

@@ -6,12 +6,17 @@ Lets agents put images in GitHub issues, comments and PRs, which the GitHub API 
 
 ## Server
 
+Point a DNS record at the host, open ports 80 and 443, then:
+
 ```sh
-docker build -t polaroid .
-docker run -d -v polaroid:/data -e PUBLIC_URL=https://img.example.com -p 3000:3000 polaroid
+git clone https://github.com/marcreichel/polaroid.git && cd polaroid
+echo DOMAIN=img.example.com > .env
+docker compose up -d --build
 ```
 
-Put it behind HTTPS (GitHub's camo image proxy needs it). Back up the `/data` volume.
+Caddy obtains the HTTPS certificate automatically (GitHub's camo image proxy requires HTTPS). Images live in the `images` volume, so back that up. Update with `git pull && docker compose up -d --build`.
+
+Behind an existing reverse proxy, run only the `polaroid` service and route the domain to port 3000. Allow request bodies of at least 10 MB.
 
 | Env | Default |
 |---|---|
