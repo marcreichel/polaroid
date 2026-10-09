@@ -27,5 +27,26 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Marc Reichel",
+    "url": "https://marcreichel.dev/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcreichel/polaroid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/marcreichel/polaroid/issues"
+  },
+  "homepage": "https://github.com/marcreichel/polaroid#readme",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "github",
+    "image-hosting",
+    "screenshots",
+    "ai-agents"
+  ]
 }
