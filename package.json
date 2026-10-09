@@ -1,0 +1,31 @@
+{
+  "name": "@marcreichel/polaroid",
+  "version": "0.1.0",
+  "description": "Image hosting for agents to embed screenshots in GitHub issues, comments and PRs",
+  "type": "module",
+  "bin": {
+    "polaroid-mcp": "dist/mcp.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "node --test src/server.test.ts"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
